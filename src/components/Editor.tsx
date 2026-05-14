@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import Editor from '@monaco-editor/react';
+import MonacoEditor from '@monaco-editor/react';
 
 interface EditorProps {
   content: string;
@@ -16,10 +16,10 @@ export function Editor({ content, onChange, language = 'markdown' }: EditorProps
 
   return (
     <div className="h-full w-full">
-      <Editor
+      <MonacoEditor
         language={language}
         value={content}
-        onChange={(value) => onChange(value || '')}
+        onChange={(value: string | undefined) => onChange(value || '')}
         onMount={handleEditorDidMount}
         theme="vs-dark"
         options={{
