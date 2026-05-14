@@ -47,7 +47,40 @@ markdown-editor/
 
 ---
 
-### Task 1: 初始化Tauri项目
+### Task 1: 初始化项目Git配置
+
+**Files:**
+- Modify: `.git/config`
+
+- [ ] **Step 1: 添加远程仓库**
+
+```bash
+git remote add origin git@github.com:mwrforever/learning.git
+```
+
+- [ ] **Step 2: 推送到远程仓库**
+
+```bash
+git push -u origin master
+```
+
+- [ ] **Step 3: 创建并切换到dev分支**
+
+```bash
+git checkout -b dev
+git push -u origin dev
+```
+
+- [ ] **Step 4: 提交**
+
+```bash
+git add .
+git commit -m "chore: setup git remote and dev branch"
+```
+
+---
+
+### Task 2: 初始化Tauri项目
 
 **Files:**
 - Create: `package.json`
@@ -57,7 +90,13 @@ markdown-editor/
 - Create: `tsconfig.json`
 - Create: `vite.config.ts`
 
-- [ ] **Step 1: 创建package.json**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/init-tauri-project
+```
+
+- [ ] **Step 2: 创建package.json**
 
 ```json
 {
@@ -192,15 +231,52 @@ git add .
 git commit -m "feat: initialize Tauri project"
 ```
 
+- [ ] **Step 6: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/init-tauri-project
+```
+
+- [ ] **Step 7: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 8: 合并feat分支到dev**
+
+```bash
+git merge feat/init-tauri-project
+```
+
+- [ ] **Step 9: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 10: 删除feat分支**
+
+```bash
+git branch -d feat/init-tauri-project
+git push origin --delete feat/init-tauri-project
+```
+
 ---
 
-### Task 2: 实现Rust文件操作模块
+### Task 3: 实现Rust文件操作模块
 
 **Files:**
 - Create: `src-tauri/src/file.rs`
 - Modify: `src-tauri/src/main.rs`
 
-- [ ] **Step 1: 创建file.rs**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/file-operations
+```
+
+- [ ] **Step 2: 创建file.rs**
 
 ```rust
 use std::fs;
@@ -244,21 +320,58 @@ pub fn write_file_content(path: &str, content: &str) -> Result<(), String> {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src-tauri/src/file.rs
 git commit -m "feat: add file operations module"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/file-operations
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/file-operations
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/file-operations
+git push origin --delete feat/file-operations
+```
+
 ---
 
-### Task 3: 实现Tauri命令
+### Task 4: 实现Tauri命令
 
 **Files:**
 - Create: `src-tauri/src/commands.rs`
 
-- [ ] **Step 1: 创建commands.rs**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/tauri-commands
+```
+
+- [ ] **Step 2: 创建commands.rs**
 
 ```rust
 use crate::file::{read_file_content, write_file_content};
@@ -284,21 +397,58 @@ pub async fn save_file(path: String, content: String) -> Result<(), String> {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src-tauri/src/commands.rs
 git commit -m "feat: add Tauri commands"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/tauri-commands
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/tauri-commands
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/tauri-commands
+git push origin --delete feat/tauri-commands
+```
+
 ---
 
-### Task 4: 实现自动保存模块
+### Task 5: 实现自动保存模块
 
 **Files:**
 - Create: `src-tauri/src/save.rs`
 
-- [ ] **Step 1: 创建save.rs**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/auto-save
+```
+
+- [ ] **Step 2: 创建save.rs**
 
 ```rust
 use std::collections::HashMap;
@@ -357,21 +507,58 @@ impl Default for AutoSaveManager {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src-tauri/src/save.rs
 git commit -m "feat: add auto-save module"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/auto-save
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/auto-save
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/auto-save
+git push origin --delete feat/auto-save
+```
+
 ---
 
-### Task 5: 实现快捷键模块
+### Task 6: 实现快捷键模块
 
 **Files:**
 - Create: `src-tauri/src/shortcuts.rs`
 
-- [ ] **Step 1: 创建shortcuts.rs**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/shortcuts
+```
+
+- [ ] **Step 2: 创建shortcuts.rs
 
 ```rust
 use tauri::{AppHandle};
@@ -387,21 +574,58 @@ pub fn register_shortcuts(handle: AppHandle) {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src-tauri/src/shortcuts.rs
 git commit -m "feat: add shortcuts module"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/shortcuts
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/shortcuts
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/shortcuts
+git push origin --delete feat/shortcuts
+```
+
 ---
 
-### Task 6: 实现前端类型定义
+### Task 7: 实现前端类型定义
 
 **Files:**
 - Create: `src/types/index.ts`
 
-- [ ] **Step 1: 创建类型定义**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/type-definitions
+```
+
+- [ ] **Step 2: 创建类型定义
 
 ```typescript
 export type ViewMode = 'wysiwyg' | 'source';
@@ -416,21 +640,58 @@ export interface EditorState {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/types/index.ts
 git commit -m "feat: add type definitions"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/type-definitions
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/type-definitions
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/type-definitions
+git push origin --delete feat/type-definitions
+```
+
 ---
 
-### Task 7: 实现Markdown工具函数
+### Task 8: 实现Markdown工具函数
 
 **Files:**
 - Create: `src/utils/markdown.ts`
 
-- [ ] **Step 1: 创建markdown工具**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/markdown-utilities
+```
+
+- [ ] **Step 2: 创建markdown工具
 
 ```typescript
 import { marked } from 'marked';
@@ -450,21 +711,58 @@ export function isMarkdown(content: string): boolean {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/utils/markdown.ts
 git commit -m "feat: add markdown utilities"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/markdown-utilities
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/markdown-utilities
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/markdown-utilities
+git push origin --delete feat/markdown-utilities
+```
+
 ---
 
-### Task 8: 实现HTML工具函数
+### Task 9: 实现HTML工具函数
 
 **Files:**
 - Create: `src/utils/html.ts`
 
-- [ ] **Step 1: 创建html工具**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/html-utilities
+```
+
+- [ ] **Step 2: 创建html工具
 
 ```typescript
 import DOMPurify from 'dompurify';
@@ -478,21 +776,58 @@ export function isHTML(content: string): boolean {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/utils/html.ts
 git commit -m "feat: add HTML utilities"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/html-utilities
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/html-utilities
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/html-utilities
+git push origin --delete feat/html-utilities
+```
+
 ---
 
-### Task 9: 实现自动保存Hook
+### Task 10: 实现自动保存Hook
 
 **Files:**
 - Create: `src/hooks/useAutoSave.ts`
 
-- [ ] **Step 1: 创建useAutoSave**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/use-autosave-hook
+```
+
+- [ ] **Step 2: 创建useAutoSave
 
 ```typescript
 import { useEffect, useRef } from 'react';
@@ -558,21 +893,58 @@ export function useAutoSave({
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/hooks/useAutoSave.ts
 git commit -m "feat: add useAutoSave hook"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/use-autosave-hook
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/use-autosave-hook
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/use-autosave-hook
+git push origin --delete feat/use-autosave-hook
+```
+
 ---
 
-### Task 10: 实现快捷键Hook
+### Task 11: 实现快捷键Hook
 
 **Files:**
 - Create: `src/hooks/useShortcuts.ts`
 
-- [ ] **Step 1: 创建useShortcuts**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/use-shortcuts-hook
+```
+
+- [ ] **Step 2: 创建useShortcuts
 
 ```typescript
 import { useEffect } from 'react';
@@ -601,21 +973,58 @@ export function useShortcuts(handlers: ShortcutHandler[]) {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/hooks/useShortcuts.ts
 git commit -m "feat: add useShortcuts hook"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/use-shortcuts-hook
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/use-shortcuts-hook
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/use-shortcuts-hook
+git push origin --delete feat/use-shortcuts-hook
+```
+
 ---
 
-### Task 11: 实现编辑器组件
+### Task 12: 实现编辑器组件
 
 **Files:**
 - Create: `src/components/Editor.tsx`
 
-- [ ] **Step 1: 创建Editor组件**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/editor-component
+```
+
+- [ ] **Step 2: 创建Editor组件
 
 ```typescript
 import React, { useRef } from 'react';
@@ -665,21 +1074,58 @@ export function Editor({ content, onChange, viewMode, language }: EditorProps) {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/components/Editor.tsx
 git commit -m "feat: add Editor component"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/editor-component
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/editor-component
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/editor-component
+git push origin --delete feat/editor-component
+```
+
 ---
 
-### Task 12: 实现渲染器组件
+### Task 13: 实现渲染器组件
 
 **Files:**
 - Create: `src/components/Renderer.tsx`
 
-- [ ] **Step 1: 创建Renderer组件**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/renderer-component
+```
+
+- [ ] **Step 2: 创建Renderer组件
 
 ```typescript
 import React, { useEffect, useState } from 'react';
@@ -724,21 +1170,58 @@ export function Renderer({ content, fileType, viewMode }: RendererProps) {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/components/Renderer.tsx
 git commit -m "feat: add Renderer component"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/renderer-component
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/renderer-component
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/renderer-component
+git push origin --delete feat/renderer-component
+```
+
 ---
 
-### Task 13: 实现视图切换组件
+### Task 14: 实现视图切换组件
 
 **Files:**
 - Create: `src/components/ViewSwitcher.tsx`
 
-- [ ] **Step 1: 创建ViewSwitcher组件**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/view-switcher-component
+```
+
+- [ ] **Step 2: 创建ViewSwitcher组件
 
 ```typescript
 import React from 'react';
@@ -773,21 +1256,58 @@ export function ViewSwitcher({ currentMode, onModeChange }: ViewSwitcherProps) {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/components/ViewSwitcher.tsx
 git commit -m "feat: add ViewSwitcher component"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/view-switcher-component
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/view-switcher-component
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/view-switcher-component
+git push origin --delete feat/view-switcher-component
+```
+
 ---
 
-### Task 14: 实现状态栏组件
+### Task 15: 实现状态栏组件
 
 **Files:**
 - Create: `src/components/StatusBar.tsx`
 
-- [ ] **Step 1: 创建StatusBar组件**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/status-bar-component
+```
+
+- [ ] **Step 2: 创建StatusBar组件
 
 ```typescript
 import React from 'react';
@@ -819,23 +1339,60 @@ export function StatusBar({ filePath, saveStatus, fileType }: StatusBarProps) {
 }
 ```
 
-- [ ] **Step 2: 提交**
+- [ ] **Step 3: 提交**
 
 ```bash
 git add src/components/StatusBar.tsx
 git commit -m "feat: add StatusBar component"
 ```
 
+- [ ] **Step 4: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/status-bar-component
+```
+
+- [ ] **Step 5: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 6: 合并feat分支到dev**
+
+```bash
+git merge feat/status-bar-component
+```
+
+- [ ] **Step 7: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 8: 删除feat分支**
+
+```bash
+git branch -d feat/status-bar-component
+git push origin --delete feat/status-bar-component
+```
+
 ---
 
-### Task 15: 实现主应用组件
+### Task 16: 实现主应用组件
 
 **Files:**
 - Create: `src/App.tsx`
 - Create: `src/main.tsx`
 - Create: `src/index.css`
 
-- [ ] **Step 1: 创建App.tsx**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/main-app-component
+```
+
+- [ ] **Step 2: 创建App.tsx**
 
 ```typescript
 import React, { useState } from 'react';
@@ -968,16 +1525,47 @@ body { margin: 0; }
 </html>
 ```
 
-- [ ] **Step 5: 提交**
+- [ ] **Step 6: 提交**
 
 ```bash
 git add src/App.tsx src/main.tsx src/index.css index.html
 git commit -m "feat: add main App component"
 ```
 
+- [ ] **Step 7: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/main-app-component
+```
+
+- [ ] **Step 8: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 9: 合并feat分支到dev**
+
+```bash
+git merge feat/main-app-component
+```
+
+- [ ] **Step 10: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 11: 删除feat分支**
+
+```bash
+git branch -d feat/main-app-component
+git push origin --delete feat/main-app-component
+```
+
 ---
 
-### Task 16: 配置构建和启动
+### Task 17: 配置构建和启动
 
 **Files:**
 - Create: `vite.config.ts`
@@ -985,7 +1573,13 @@ git commit -m "feat: add main App component"
 - Create: `tailwind.config.js`
 - Create: `postcss.config.js`
 
-- [ ] **Step 1: 创建vite.config.ts**
+- [ ] **Step 1: 创建feat分支**
+
+```bash
+git checkout -b feat/build-configuration
+```
+
+- [ ] **Step 2: 创建vite.config.ts
 
 ```typescript
 import { defineConfig } from "vite";
@@ -1028,16 +1622,47 @@ export default {
 }
 ```
 
-- [ ] **Step 5: 提交**
+- [ ] **Step 6: 提交**
 
 ```bash
 git add vite.config.ts tsconfig.json tailwind.config.js postcss.config.js
 git commit -m "feat: configure build tools"
 ```
 
+- [ ] **Step 7: 推送到远程feat分支**
+
+```bash
+git push -u origin feat/build-configuration
+```
+
+- [ ] **Step 8: 切换回dev分支**
+
+```bash
+git checkout dev
+```
+
+- [ ] **Step 9: 合并feat分支到dev**
+
+```bash
+git merge feat/build-configuration
+```
+
+- [ ] **Step 10: 推送dev分支**
+
+```bash
+git push origin dev
+```
+
+- [ ] **Step 11: 删除feat分支**
+
+```bash
+git branch -d feat/build-configuration
+git push origin --delete feat/build-configuration
+```
+
 ---
 
-### Task 17: 测试应用
+### Task 18: 测试应用
 
 **Files:**
 - Test: 完整应用
@@ -1057,10 +1682,14 @@ Expected: 应用窗口打开，可以打开.md和.html文件，支持预览和�
 ```bash
 git add .
 git commit -m "test: verify application functionality"
+git push origin dev
 ```
 
 ---
 
 ## 自评完成
 
-计划已创建，覆盖了所有设计文档中的需求。每个任务都是独立的、可执行的步骤，包含完整的代码和命令。
+计划已创建，覆盖了所有设计文档中的需求。每个任务都是独立的、可执行的步骤，包含完整的代码和命令。所有任务都已添加Git分支管理流程：
+- Task 1: 初始化Git配置和dev分支
+- Task 2-17: 每个功能模块在feat分支开发，测试成功后合并到dev分支
+- Task 18: 在dev分支进行最终测试验证
