@@ -1,39 +1,43 @@
+import { Theme } from '../types';
+
 interface StatusBarProps {
   saveStatus: 'saved' | 'saving' | 'unsaved';
   filePath: string | null;
   wordCount: number;
+  theme: Theme;
 }
 
-export function StatusBar({ saveStatus, filePath, wordCount }: StatusBarProps) {
+export function StatusBar({ saveStatus, filePath, wordCount, theme }: StatusBarProps) {
   const getStatusText = () => {
     switch (saveStatus) {
       case 'saved':
-        return '已保存';
+        return '';
       case 'saving':
         return '保存中...';
       case 'unsaved':
-        return '未保存';
+        return '●';
     }
   };
 
   const getStatusColor = () => {
     switch (saveStatus) {
       case 'saved':
-        return 'text-green-400';
+        return theme === 'dark' ? 'text-gray-500' : 'text-gray-400';
       case 'saving':
-        return 'text-yellow-400';
+        return theme === 'dark' ? 'text-yellow-400' : 'text-yellow-600';
       case 'unsaved':
-        return 'text-red-400';
+        return theme === 'dark' ? 'text-blue-400' : 'text-blue-600';
     }
   };
 
   return (
-    <div className="flex items-center justify-between px-4 py-2 bg-gray-800 text-sm">
+    <div className={`flex items-center justify-between px-6 py-2 text-sm ${
+      theme === 'dark' ? 'bg-[#252526] text-gray-400' : 'bg-gray-50 text-gray-600'
+    }`}>
       <div className="flex items-center gap-4">
         <span className={getStatusColor()}>{getStatusText()}</span>
-        {filePath && <span className="text-gray-400">{filePath}</span>}
       </div>
-      <div className="text-gray-400">{wordCount} 字</div>
+      <div className={theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}>{wordCount} 字</div>
     </div>
   );
 }

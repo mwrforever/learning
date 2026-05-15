@@ -3,11 +3,10 @@ import { invoke } from '@tauri-apps/api/tauri';
 import { open } from '@tauri-apps/api/dialog';
 import { Editor } from './components/Editor';
 import { Renderer } from './components/Renderer';
-import { ViewSwitcher } from './components/ViewSwitcher';
 import { StatusBar } from './components/StatusBar';
 import { useAutoSave } from './hooks/useAutoSave';
 import { useShortcuts } from './hooks/useShortcuts';
-import { EditorState, ViewMode } from './types';
+import { EditorState, ViewMode, Theme } from './types';
 
 export function App() {
   const [state, setState] = useState<EditorState>({
@@ -15,6 +14,7 @@ export function App() {
     filePath: null,
     fileType: 'markdown',
     viewMode: 'wysiwyg',
+    theme: 'dark',
     isDirty: false,
     saveStatus: 'saved',
   });
@@ -42,7 +42,20 @@ export function App() {
         }));
       },
     },
+    {
+      key: 'toggle-theme',
+      handler: () => {
+        setState(prev => ({
+          ...prev,
+          theme: prev.theme === 'dark' ? 'light' : 'dark',
+        }));
+      },
+    },
   ]);
+
+  useEffect(() => {
+    document.documentElement.className = state.theme;
+  }, [state.theme]);
 
   const handleOpenFile = async () => {
     const selected = await open({
@@ -68,6 +81,7 @@ export function App() {
         filePath: selected,
         fileType,
         viewMode: 'wysiwyg',
+        theme: state.theme,
         isDirty: false,
         saveStatus: 'saved',
       });
@@ -87,34 +101,54 @@ export function App() {
     setState(prev => ({ ...prev, viewMode: mode }));
   };
 
+  const handleThemeToggle = () => {
+    setState(prev => ({
+      ...prev,
+      theme: prev.theme === 'dark' ? 'light' : 'dark',
+    }));
+  };
+
   return (
-    <div className="h-screen flex flex-col bg-gray-900 text-white">
-      <div className="flex items-center justify-between px-4 py-2 bg-gray-800 border-b border-gray-700">
-        <h1 className="text-xl font-bold">Markdown Editor</h1>
+    <div className={`h-screen flex flex-col ${state.theme === 'dark' ? 'bg-[#1e1e1e] text-gray-100' : 'bg-white text-gray-900'}`}>
+      <div className={`flex items-center justify-between px-6 py-3 ${state.theme === 'dark' ? 'bg-[#252526] border-b border-[#3e3e42]' : 'bg-gray-50 border-b border-gray-200'}`}>
         <div className="flex items-center gap-4">
+          <h1 className={`text-lg font-medium ${state.theme === 'dark' ? 'text-gray-100' : 'text-gray-800'}`}>
+            {state.filePath ? state.filePath.split(/[/\\]/).pop() : 'Untitled'}
+          </h1>
+        </div>
+        <div className="flex items-center gap-2">
           <button
             onClick={handleOpenFile}
-            className="px-3 py-1 bg-blue-600 hover:bg-blue-700 rounded"
+            className={`px-3 py-1.5 text-sm rounded transition-colors ${state.theme === 'dark' 
+              ? 'bg-[#3c3c3c] hover:bg-[#4a4a4a] text-gray-100' 
+              : 'bg-gray-200 hover:bg-gray-300 text-gray-700'}`}
           >
             打开文件
           </button>
-          <ViewSwitcher currentMode={state.viewMode} onModeChange={handleModeChange} />
+          <button
+            onClick={handleThemeToggle}
+            className={`px-3 py-1.5 text-sm rounded transition-colors ${state.theme === 'dark' 
+              ? 'bg-[#3c3c3c] hover:bg-[#4a4a4a] text-gray-100' 
+              : 'bg-gray-200 hover:bg-gray-300 text-gray-700'}`}
+          >
+            {state.theme === 'dark' ? '☀️' : '🌙'}
+          </button>
         </div>
       </div>
 
       <div className="flex-1 flex overflow-hidden">
         {state.viewMode === 'wysiwyg' ? (
           <>
-            <div className="w-1/2 border-r border-gray-700">
-              <Editor content={state.content} onChange={handleContentChange} language={state.fileType === 'markdown' ? 'markdown' : state.fileType === 'html' ? 'html' : 'plaintext'} />
+            <div className={`w-1/2 ${state.theme === 'dark' ? 'border-r border-[#3e3e42]' : 'border-r border-gray-200'}`}>
+              <Editor content={state.content} onChange={handleContentChange} theme={state.theme} language={state.fileType === 'markdown' ? 'markdown' : state.fileType === 'html' ? 'html' : 'plaintext'} />
             </div>
             <div className="w-1/2">
-              <Renderer content={state.content} fileType={state.fileType} />
+              <Renderer content={state.content} fileType={state.fileType} theme={state.theme} />
             </div>
           </>
         ) : (
           <div className="w-full">
-            <Editor content={state.content} onChange={handleContentChange} language={state.fileType === 'markdown' ? 'markdown' : state.fileType === 'html' ? 'html' : 'plaintext'} />
+            <Editor content={state.content} onChange={handleContentChange} theme={state.theme} language={state.fileType === 'markdown' ? 'markdown' : state.fileType === 'html' ? 'html' : 'plaintext'} />
           </div>
         )}
       </div>
@@ -123,6 +157,7 @@ export function App() {
         saveStatus={state.saveStatus}
         filePath={state.filePath}
         wordCount={wordCount}
+        theme={state.theme}
       />
     </div>
   );

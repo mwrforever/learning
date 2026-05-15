@@ -8,4 +8,8 @@ pub fn register_shortcuts(handle: AppHandle) {
     handle.global_shortcut("CommandOrControl+`", move |_| {
         handle.emit_all("toggle-view", ()).ok();
     }).ok();
+    
+    handle.global_shortcut("CommandOrControl+D", move |_| {
+        handle.emit_all("toggle-theme", ()).ok();
+    }).ok();
 }
