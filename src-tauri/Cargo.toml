@@ -1,0 +1,22 @@
+[package]
+name = "markdown-editor"
+version = "0.1.0"
+description = "跨平台Markdown编辑器"
+authors = ["you"]
+license = ""
+repository = ""
+edition = "2021"
+rust-version = "1.70"
+
+[build-dependencies]
+tauri-build = { version = "1.5", features = [] }
+
+[dependencies]
+tauri = { version = "1.6", features = [ "fs-read-file", "fs-read-dir", "fs-write-file", "shell-open", "dialog-open", "dialog-save"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1.0", features = ["fs"] }
+
+[features]
+default = ["custom-protocol"]
+custom-protocol = ["tauri/custom-protocol"]
